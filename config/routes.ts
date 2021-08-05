@@ -1,4 +1,4 @@
-﻿export default [
+export default [
   {
     path: '/user',
     layout: false,
@@ -23,6 +23,12 @@
     name: 'welcome',
     icon: 'smile',
     component: './Welcome',
+  },
+  {
+    name: '配置中心',
+    icon: 'ApartmentOutlined',
+    path: '/route',
+    component: './Routes',
   },
   {
     path: '/admin',

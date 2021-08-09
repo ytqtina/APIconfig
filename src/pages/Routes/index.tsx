@@ -1,8 +1,13 @@
-import { PageContainer } from '@ant-design/pro-layout';
 // import { useState, useEffect } from 'react';
 // import { Spin } from 'antd';
 // import styles from './index.less';
+
+import BasicLayout from './BasicLayout';
+
 export default () => {
+  if (!window.localStorage.getItem('starList')) {
+    window.localStorage.setItem('starList', JSON.stringify([]));
+  }
   // const [loading, setLoading] = useState<boolean>(true);
   // useEffect(() => {
   //   setTimeout(() => {
@@ -10,15 +15,17 @@ export default () => {
   //   }, 1000);
   // }, []);
   return (
-    <PageContainer>
-      <div
-        style={{
-          paddingTop: 100,
-          textAlign: 'center',
-        }}
-      >
-        {/* <Spin spinning={loading} size="large" /> */}
-      </div>
-    </PageContainer>
+    <div style={{ margin: -24 }}>
+      <BasicLayout />
+    </div>
+
+    // <div
+    //   style={{
+    //     paddingTop: 100,
+    //     textAlign: 'center',
+    //   }}
+    // >
+    //   {/* <Spin spinning={loading} size="large" /> */}
+    // </div>
   );
 };

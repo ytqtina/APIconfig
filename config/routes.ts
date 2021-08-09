@@ -31,33 +31,46 @@ export default [
     component: './Routes',
   },
   {
-    path: '/admin',
-    name: 'admin',
-    icon: 'crown',
-    access: 'canAdmin',
-    component: './Admin',
-    routes: [
-      {
-        path: '/admin/sub-page',
-        name: 'sub-page',
-        icon: 'smile',
-        component: './Welcome',
-      },
-      {
-        component: './404',
-      },
-    ],
+    name: '服务管理',
+    icon: 'ApiOutlined',
+    path: '/servicemanage',
+    component: './ServiceManage',
   },
   {
-    name: 'list.table-list',
-    icon: 'table',
-    path: '/list',
-    component: './TableList',
+    name: '插件管理',
+    icon: 'BuildOutlined',
+    path: '/plugins',
+    component: './Plugins',
   },
+  // {
+  //   path: '/admin',
+  //   name: 'admin',
+  //   icon: 'crown',
+  //   access: 'canAdmin',
+  //   component: './Admin',
+  //   routes: [
+  //     {
+  //       path: '/admin/sub-page',
+  //       name: 'sub-page',
+  //       icon: 'smile',
+  //       component: './Welcome',
+  //     },
+  //     {
+  //       component: './404',
+  //     },
+  //   ],
+  // },
+  // {
+  //   name: 'list.table-list',
+  //   icon: 'table',
+  //   path: '/list',
+  //   component: './TableList',
+  // },
   {
     path: '/',
     redirect: '/welcome',
   },
+
   {
     component: './404',
   },

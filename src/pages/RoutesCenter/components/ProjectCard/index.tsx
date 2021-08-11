@@ -4,7 +4,7 @@ import { Button, Tooltip } from 'antd';
 import { StarFilled, StarTwoTone } from '@ant-design/icons';
 
 export default (props: any) => {
-  const project = { ...props.project };
+  const { project, collect: setCollect, selected, onClick } = props;
 
   const [collected, setCollected] = useState<boolean>(
     JSON.parse(window.localStorage.getItem('starList') as string)?.includes(project.name),
@@ -14,7 +14,6 @@ export default (props: any) => {
       JSON.parse(window.localStorage.getItem('starList') as string)?.includes(project.name),
     );
   }, [window.localStorage.getItem('starList')]);
-  // const collected = props.collected;
   const collect = () => {
     const starList: string[] = JSON.parse(window.localStorage.getItem('starList') as string);
     if (collected) {
@@ -28,7 +27,7 @@ export default (props: any) => {
       starList.push(project.name);
     }
     window.localStorage.setItem('starList', JSON.stringify([...starList]));
-    props.collect();
+    setCollect();
   };
 
   return (
@@ -40,23 +39,26 @@ export default (props: any) => {
           width: 250,
           margin: 20,
           cursor: 'pointer',
-          backgroundColor: props.selected && 'rgb(230, 247, 255)',
-          borderLeft: props.selected && `3px solid #1890ff`,
-          boxShadow: props.selected && '5px 5px 10px lightgray',
-          color: props.selected && '#1890ff',
+          backgroundColor: selected && 'rgb(230, 247, 255)',
+          borderLeft: selected && `3px solid #1890ff`,
+          boxShadow: selected && '5px 5px 10px lightgray',
+          color: selected && '#1890ff',
         }}
         extra={
-          <Tooltip placement="top" title={collected ? '取消收藏' : '收藏'}>
+          <Tooltip title={collected ? '取消收藏' : '收藏'}>
             <Button
               type="link"
               size="small"
               icon={collected ? <StarFilled /> : <StarTwoTone />}
-              onClick={collect}
+              onClick={(event) => {
+                event.stopPropagation();
+                collect();
+              }}
             ></Button>
           </Tooltip>
         }
         size="small"
-        onClick={props.onClick}
+        onClick={onClick}
         hoverable
       >
         <div>{project.id}</div>

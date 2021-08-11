@@ -20,7 +20,7 @@ export default [
   },
   {
     path: '/welcome',
-    name: 'welcome',
+    name: '欢迎',
     icon: 'smile',
     component: './Welcome',
   },
@@ -28,7 +28,13 @@ export default [
     name: '配置中心',
     icon: 'ApartmentOutlined',
     path: '/route',
-    component: './Routes',
+    component: './RoutesCenter',
+  },
+  {
+    name: '应用管理',
+    icon: 'AppstoreAddOutlined',
+    path: '/appManage',
+    component: './AppManage',
   },
   {
     name: '服务管理',
@@ -40,9 +46,8 @@ export default [
     name: '插件管理',
     icon: 'BuildOutlined',
     path: '/plugins',
-    component: './Plugins',
-  },
-  // {
+    component: './PluginManage',
+  }, // {
   //   path: '/admin',
   //   name: 'admin',
   //   icon: 'crown',
@@ -60,17 +65,10 @@ export default [
   //     },
   //   ],
   // },
-  // {
-  //   name: 'list.table-list',
-  //   icon: 'table',
-  //   path: '/list',
-  //   component: './TableList',
-  // },
   {
     path: '/',
     redirect: '/welcome',
   },
-
   {
     component: './404',
   },

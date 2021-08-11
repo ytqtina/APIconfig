@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Space, Button, Input, Layout, PageHeader } from 'antd';
+import { Space, Button, Input, Layout, PageHeader, message } from 'antd';
+import { ModalForm, ProFormText } from '@ant-design/pro-form';
+import { ProFormSelect, ProFormSlider } from '@ant-design/pro-form';
+import {} from '@ant-design/icons';
+
 import ProjectCard from '../components/ProjectCard';
 
 import {} from '@ant-design/icons';
@@ -7,6 +11,13 @@ import APIList from '../components/APIList';
 
 const { Search } = Input;
 const { Content, Sider } = Layout;
+const waitTime = (time: number = 100) => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(true);
+    }, time);
+  });
+};
 export default () => {
   const [projectList, setProjectList] = useState<any>([]);
   const [selectedProject, setSelectedProject] = useState<any>();
@@ -35,7 +46,6 @@ export default () => {
           break;
         }
       }
-      // if (name) break;
     }
     setProjectList(showList);
   };
@@ -63,7 +73,24 @@ export default () => {
             extra={[
               <Space style={{ padding: 12 }} key="leftHeader">
                 <Search placeholder="搜索" onSearch={onSearch} />
-                <Button>创建</Button>
+                <ModalForm<{
+                  name: string;
+                }>
+                  width={500}
+                  title="创建项目"
+                  trigger={<Button>创建</Button>}
+                  modalProps={{
+                    onCancel: () => console.log('run'),
+                  }}
+                  onFinish={async (values) => {
+                    await waitTime(2000);
+                    console.log(values.name);
+                    message.success('提交成功');
+                    return true;
+                  }}
+                >
+                  <ProFormText name="name" label="项目名称" placeholder="请输入项目名称" />
+                </ModalForm>
               </Space>,
             ]}
           >
@@ -99,11 +126,60 @@ export default () => {
             style={{ padding: 0 }}
             extra={[
               <Space style={{ padding: 12, paddingRight: 30 }} key="rightHeader">
-                <Button>添加路由</Button>
-                <Button type="primary" disabled>
-                  发布
-                </Button>
-                <Search placeholder="搜索" onSearch={onSearch} enterButton />
+                <ModalForm<{
+                  name: string;
+                }>
+                  width={500}
+                  title="添加路由"
+                  trigger={<Button>添加路由</Button>}
+                  modalProps={{
+                    onCancel: () => console.log('run'),
+                  }}
+                  onFinish={async (values) => {
+                    await waitTime(2000);
+                    console.log(values.name);
+                    message.success('提交成功');
+                    return true;
+                  }}
+                ></ModalForm>
+                <ModalForm
+                  width={500}
+                  title="发布"
+                  trigger={<Button>批量发布</Button>}
+                  modalProps={{
+                    onCancel: () => console.log('run'),
+                  }}
+                  onFinish={async (values) => {
+                    await waitTime(2000);
+                    console.log(values.name);
+                    message.success('提交成功');
+                    return true;
+                  }}
+                >
+                  <ProFormSelect
+                    name="select"
+                    label="发布环境"
+                    valueEnum={{
+                      prod: 'prod',
+                      ppe: 'ppe',
+                    }}
+                    placeholder="选择环境"
+                    rules={[{ required: true, message: '请选择发布环境' }]}
+                  />
+
+                  <ProFormSlider
+                    name="slider"
+                    label="灰度"
+                    width="lg"
+                    marks={{
+                      0: '0%',
+                      10: '10%',
+                      50: '50%',
+                      100: '100%',
+                    }}
+                  />
+                </ModalForm>
+                <Search placeholder="搜索" onSearch={onSearch} />
               </Space>,
             ]}
           >

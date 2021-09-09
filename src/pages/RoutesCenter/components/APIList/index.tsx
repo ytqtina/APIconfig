@@ -432,7 +432,7 @@ export default forwardRef<CRef, Props>(({ projectId, projectCode, keyword }, ref
   const toolsKit = (iconColor: string, url: string) => (
     <Space>
       <Popconfirm
-        title={<Text code>http://http://localhost:9000${url}</Text>}
+        title={<Text code>http://http://localhost:9000{url}</Text>}
         okText="复制路径"
         icon={
           <Title level={5}>

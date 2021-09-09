@@ -504,7 +504,7 @@ export default forwardRef<CRef, Props>(({ projectId, projectCode, keyword }, ref
       )}
 
       <BetaSchemaForm
-        preserve={false}
+        // preserve={false}
         submitter={{
           render: () => {
             return [

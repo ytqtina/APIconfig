@@ -9,20 +9,9 @@ declare namespace APPtypes {
     ownerNo: string;
     updatedOwnerNickName: string;
     updatedOwnerNo: string;
-    created: string;
+    createdAt: string;
     updatedAt: string;
   };
-  type APPList = {
-    pageName: number;
-    pageSize: number;
-    totalItems: number;
-    totalPages: number;
-    data: APPItem[];
-  };
-  type queryParams = {
-    current: number;
-    pageSize: number;
-    orderCreatedAt?: 'ASC' | 'DESC';
-    orderUpdatedAt?: 'ASC' | 'DESC';
-  };
+  type createAPP = TableList.createType<APPItem>;
+  type editAPP = TableList.editType<APPItem>;
 }

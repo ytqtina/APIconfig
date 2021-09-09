@@ -11,6 +11,11 @@ export default [
             path: '/user/login',
             component: './user/Login',
           },
+          {
+            name: '注册页',
+            path: '/user/register',
+            component: './user/Register',
+          },
         ],
       },
       {
@@ -25,10 +30,22 @@ export default [
     component: './Welcome',
   },
   {
-    name: '配置中心',
-    icon: 'ApartmentOutlined',
+    path: '/account/settings',
+    component: './AccountSettings',
+  },
+  {
+    name: '路由管理',
+    icon: 'ApiOutlined',
     path: '/route',
     component: './RoutesCenter',
+  },
+  {
+    path: '/run',
+    component: './RunApi',
+  },
+  {
+    path: '/plugin',
+    component: './PluginManage',
   },
   {
     name: '应用管理',
@@ -37,34 +54,12 @@ export default [
     component: './AppManage',
   },
   {
-    name: '服务管理',
-    icon: 'ApiOutlined',
-    path: '/servicemanage',
-    component: './ServiceManage',
+    path: '/userManage',
+    name: '用户管理',
+    icon: 'crown',
+    access: 'canAdmin',
+    component: './UserManage',
   },
-  {
-    name: '插件管理',
-    icon: 'BuildOutlined',
-    path: '/plugins',
-    component: './PluginManage',
-  }, // {
-  //   path: '/admin',
-  //   name: 'admin',
-  //   icon: 'crown',
-  //   access: 'canAdmin',
-  //   component: './Admin',
-  //   routes: [
-  //     {
-  //       path: '/admin/sub-page',
-  //       name: 'sub-page',
-  //       icon: 'smile',
-  //       component: './Welcome',
-  //     },
-  //     {
-  //       component: './404',
-  //     },
-  //   ],
-  // },
   {
     path: '/',
     redirect: '/welcome',

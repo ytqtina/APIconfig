@@ -7,27 +7,28 @@ export default (props: any) => {
   const { project, collect: setCollect, selected, onClick } = props;
 
   const [collected, setCollected] = useState<boolean>(
-    JSON.parse(window.localStorage.getItem('starList') as string)?.includes(project.name),
+    JSON.parse(window.localStorage.getItem('starList') as string)?.includes(project.id),
   );
   useEffect(() => {
     setCollected(
-      JSON.parse(window.localStorage.getItem('starList') as string)?.includes(project.name),
+      JSON.parse(window.localStorage.getItem('starList') as string)?.includes(project.id),
     );
   }, [window.localStorage.getItem('starList')]);
   const collect = () => {
     const starList: string[] = JSON.parse(window.localStorage.getItem('starList') as string);
     if (collected) {
       for (let i = 0; i < starList.length; i += 1) {
-        if (starList[i] === project.name) {
+        if (starList[i] === project.id) {
           starList.splice(i, 1);
           break;
         }
       }
     } else {
-      starList.push(project.name);
+      starList.push(project.id);
     }
     window.localStorage.setItem('starList', JSON.stringify([...starList]));
     setCollect();
+    console.log(JSON.parse(window.localStorage.getItem('starList') as string));
   };
 
   return (
@@ -35,6 +36,7 @@ export default (props: any) => {
       <ProCard
         className="card"
         title={project.name}
+        subTitle={project.code}
         style={{
           width: 250,
           margin: 20,

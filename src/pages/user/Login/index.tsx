@@ -90,11 +90,12 @@ const Login: React.FC = () => {
           <div className={styles.header}>
             <Link to="/">
               <img alt="logo" className={styles.logo} src="/logo.svg" />
-              <span className={styles.title}>Ant Design</span>
+              <span className={styles.title}>API Config</span>
             </Link>
           </div>
           <div className={styles.desc}>
-            {intl.formatMessage({ id: 'pages.layouts.userLayout.title' })}
+            一个出色的接口配置管理平台
+            {/* {intl.formatMessage({ id: 'pages.layouts.userLayout.title' })} */}
           </div>
         </div>
 
@@ -131,13 +132,13 @@ const Login: React.FC = () => {
                   defaultMessage: '账户密码登录',
                 })}
               />
-              <Tabs.TabPane
+              {/* <Tabs.TabPane
                 key="mobile"
                 tab={intl.formatMessage({
                   id: 'pages.login.phoneLogin.tab',
                   defaultMessage: '手机号登录',
                 })}
-              />
+              /> */}
             </Tabs>
 
             {status === 'error' && loginType === 'account' && (
@@ -197,8 +198,8 @@ const Login: React.FC = () => {
               </>
             )}
 
-            {status === 'error' && loginType === 'mobile' && <LoginMessage content="验证码错误" />}
-            {type === 'mobile' && (
+            {/* {status === 'error' && loginType === 'mobile' && <LoginMessage content="验证码错误" />} */}
+            {/* {type === 'mobile' && (
               <>
                 <ProFormText
                   fieldProps={{
@@ -278,7 +279,7 @@ const Login: React.FC = () => {
                   }}
                 />
               </>
-            )}
+            )} */}
             <div
               style={{
                 marginBottom: 24,
@@ -287,24 +288,39 @@ const Login: React.FC = () => {
               <ProFormCheckbox noStyle name="autoLogin">
                 <FormattedMessage id="pages.login.rememberMe" defaultMessage="自动登录" />
               </ProFormCheckbox>
-              <a
+              {/* <a
                 style={{
                   float: 'right',
                 }}
               >
                 <FormattedMessage id="pages.login.forgotPassword" defaultMessage="忘记密码" />
-              </a>
+              </a> */}
+              <Link
+                to="/user/register"
+                style={{
+                  float: 'right',
+                }}
+              >
+                <span>没有账户，去注册</span>
+              </Link>
+              {/* <a
+                style={{
+                  float: 'right',
+                }}
+              >
+                没有账号，去注册
+              </a> */}
             </div>
           </ProForm>
-          <Space className={styles.other}>
+          {/* <Space className={styles.other}>
             <FormattedMessage id="pages.login.loginWith" defaultMessage="其他登录方式" />
             <AlipayCircleOutlined className={styles.icon} />
             <TaobaoCircleOutlined className={styles.icon} />
             <WeiboCircleOutlined className={styles.icon} />
-          </Space>
+          </Space> */}
         </div>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };

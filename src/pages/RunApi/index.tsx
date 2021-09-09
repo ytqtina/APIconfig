@@ -91,14 +91,14 @@ export default () => {
   };
 
   return (
-    <>
+    <div>
       <ProCard
         title={
           <PageHeader
             className="site-page-header"
-            onBack={() => {
-              history.back();
-            }}
+            // onBack={() => {
+            //   history.back();
+            // }}
             title="运行"
             subTitle={path}
             style={{ padding: 0 }}
@@ -247,6 +247,6 @@ export default () => {
           </div>
         </ProCard>
       </ProCard>
-    </>
+    </div>
   );
 };

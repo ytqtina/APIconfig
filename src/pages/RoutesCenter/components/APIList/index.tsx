@@ -463,7 +463,8 @@ export default forwardRef<CRef, Props>(({ projectId, projectCode, keyword }, ref
           style={{ color: iconColor }}
           onClick={(event) => {
             event.stopPropagation();
-            history.push(`/run?route=/${projectCode}${url}`);
+            window.open(`/run?route=/${projectCode}${url}&routeId=${projectId}`);
+            // history.push(`/run?route=/${projectCode}${url}`);
           }}
         />
       </Tooltip>
@@ -473,7 +474,8 @@ export default forwardRef<CRef, Props>(({ projectId, projectCode, keyword }, ref
           style={{ color: iconColor }}
           onClick={(event) => {
             event.stopPropagation();
-            history.push(`/plugin?route=/${projectCode}${url}&routeId=${projectId}`);
+            window.open(`/plugin?route=/${projectCode}${url}&routeId=${projectId}`);
+            // history.push(`/plugin?route=/${projectCode}${url}&routeId=${projectId}`);
           }}
         />
       </Tooltip>

@@ -445,9 +445,9 @@ const PluginManage = () => {
     <div>
       <PageHeader
         ghost={false}
-        onBack={() => {
-          history.back();
-        }}
+        // onBack={() => {
+        //   history.back();
+        // }}
         title="插件"
         subTitle={path}
         style={{ marginBottom: 24 }}
